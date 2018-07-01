@@ -59,7 +59,7 @@ public class Main {
 
 
             JsonObject ret = oaClient.getProfile(userid);
-            oaClient.sendFollowMessage()
+//            oaClient.sendFollowMessage();
             System.out.println(ret);
 
 
