@@ -120,7 +120,7 @@ public class Main extends ZaloBaseClient{
             System.out.println(action);
 //            JsonObject ret = oaClient.sendActionMessage(userid, Arrays.asList(action));
 
-            System.out.println(ret);
+//            System.out.println(ret);
         } catch (Exception e) {
             e.printStackTrace();
         }
