@@ -10,9 +10,7 @@ import com.vng.zalo.sdk.EndPoint;
 import com.vng.zalo.sdk.ZaloBaseClient;
 import com.vng.zalo.sdk.oa.ZaloOaClient;
 import com.vng.zalo.sdk.oa.ZaloOaInfo;
-import com.vng.zalo.sdk.oa.message.MsgAction;
-import com.vng.zalo.sdk.oa.message.MsgLink;
-import com.vng.zalo.sdk.oa.message.OpenInAppAction;
+import com.vng.zalo.sdk.oa.message.*;
 import com.vng.zalo.sdk.utils.MacUtils;
 
 import java.util.Arrays;
@@ -29,11 +27,11 @@ public class Main extends ZaloBaseClient{
 
         try {
             long userid = 513283509958561100L; // user id or phone number;
-//            JsonObject profile = oaClient.getProfile(userid);
-//            String message = "Hnay Nghi12112";
-//            JsonObject ret = oaClient.sendTextMessage(userid, message);
-//            System.out.println(ret);
-//            System.out.println(profile);
+            JsonObject profile = oaClient.getProfile(userid);
+            String message = "Hnay Nghi12112";
+            JsonObject ret = oaClient.sendTextMessage(userid, message);
+            System.out.println(ret);
+            System.out.println(profile);
 
 //
 //            OpenMsgAction action = new OpenInAppAction();
@@ -100,13 +98,17 @@ public class Main extends ZaloBaseClient{
 
 //            System.out.println(oaClient.getProfile(84968690229L));
 
+            OpenCallAction openCallAction = new OpenCallAction();
+            openCallAction.setPhoneCode("0968690229");
 
-//
-            OpenMsgAction action = new OpenMsgAction();
-            action.setTitle("Send interactive messages");
-            action.setDescription("This is a test for API send interactive messages");
+            QueryShowAction queryShowAction = new QueryShowAction();
+            queryShowAction.setData("ok 121");
+
+            MsgAction action = queryShowAction;
+            action.setTitle("Tesst");
+            action.setDescription("Test API");
             action.setThumb("https://developers.zalo.me/web/static/images/bg.jpg");
-
+//            action.setThumb("");
 
 
             JsonObject popup = new JsonObject();
@@ -115,12 +117,10 @@ public class Main extends ZaloBaseClient{
             popup.addProperty("ok", "ok");
             popup.addProperty("cancel", "cancel");
             action.setPopup(popup);
-
             System.out.println(action);
-
 //            JsonObject ret = oaClient.sendActionMessage(userid, Arrays.asList(action));
 
-//            System.out.println(ret);
+            System.out.println(ret);
         } catch (Exception e) {
             e.printStackTrace();
         }
